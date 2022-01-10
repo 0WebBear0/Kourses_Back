@@ -1,7 +1,8 @@
 package com.webbear.buisnes_calc.controller;
 
 import com.webbear.buisnes_calc.entity.userEntity;
-import com.webbear.buisnes_calc.repository.userRepo;
+import com.webbear.buisnes_calc.exeptions.UserAlreadyExist;
+import com.webbear.buisnes_calc.servise.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.*;
 public class AuthUser {
 
     @Autowired
-    private userRepo userRep;
+    private userService service;
 
     @CrossOrigin(origins = "http://localhost:8000")
     @PostMapping
     public ResponseEntity registration(@RequestBody userEntity user){
        try {
-           userRep.save(user);
-           return ResponseEntity.ok("Регистрация прошла");
+           service.registrations(user);
+           return ResponseEntity.ok("Пользователь сохранён");
+       }
+       catch (UserAlreadyExist e){
+           return ResponseEntity.badRequest().body(e.getMessage());
        }
        catch (Exception e){
            return ResponseEntity.badRequest().body("Регистация не удалась");

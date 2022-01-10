@@ -14,8 +14,8 @@ public class userEntity {
     private String username;
     private String password;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userEntity")
-//    private List<calculatedTaxation> taxations;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userEntity")
+    private List<calculatedTaxation> taxations;
 
     public userEntity(){
 
@@ -43,5 +43,13 @@ public class userEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<calculatedTaxation> getTaxations() {
+        return taxations;
+    }
+
+    public void setTaxations(List<calculatedTaxation> taxations) {
+        this.taxations = taxations;
     }
 }
