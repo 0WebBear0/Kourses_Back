@@ -14,12 +14,22 @@ public class taxationController {
     private taxationService taxServ;
 
     @PostMapping
-    public ResponseEntity createdTax(@RequestBody calculatedTaxation tax, @RequestParam Long id){
+    public ResponseEntity createdTax(@RequestBody calculatedTaxation tax){
         try {
-            return ResponseEntity.ok(taxServ.createTax(tax, id));
+            return ResponseEntity.ok(taxServ.createTax(tax));
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity check(){
+        try {
+            return ResponseEntity.ok().body(taxServ.checkTax());
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body("Нет Записей");
         }
     }
 

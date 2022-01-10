@@ -29,14 +29,4 @@ public class AuthUser {
        }
     }
 
-
-    @GetMapping("login")
-    public ResponseEntity loginPerson(){
-        try {
-            return ResponseEntity.ok("worked");
-        }
-        catch (Exception e){
-            return ResponseEntity.badRequest().body("ex: ");
-        }
-    }
 }

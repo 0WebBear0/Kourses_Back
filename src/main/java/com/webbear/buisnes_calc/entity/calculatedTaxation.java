@@ -15,9 +15,9 @@ public class calculatedTaxation {
     private String paymentMargin;
     private String paymentCosts;
 
-    @ManyToOne
-    @JoinColumn(name = "userEntity_id")
-    private userEntity userEntity;
+//    @ManyToOne
+//    @JoinColumn(name = "userEntity_id")
+//    private userEntity userEntity;
 
     public calculatedTaxation(){
 
@@ -77,13 +77,5 @@ public class calculatedTaxation {
 
     public void setPaymentCosts(String paymentCosts) {
         this.paymentCosts = paymentCosts;
-    }
-
-    public com.webbear.buisnes_calc.entity.userEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(com.webbear.buisnes_calc.entity.userEntity userEntity) {
-        this.userEntity = userEntity;
     }
 }
